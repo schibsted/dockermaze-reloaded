@@ -1,0 +1,55 @@
+version: '2'
+services:
+  head:
+    container_name: head
+    build: ./dockermaze2-head
+    environment:
+     - DM2_ENDPOINT=backend.public.schibsted.io
+    ports:
+      - "7777:7777"
+      - "80:80"
+    networks:
+      - int
+  legs:
+    container_name: legs
+    build: ./dockermaze2-legs-game
+    depends_on:
+      - head
+    networks:
+      - int
+  arms:
+    container_name: arms
+    build: ./dockermaze2-arms-game
+    depends_on:
+      - head
+    networks:
+      - int
+  weapon:
+    container_name: weapon
+    build: ./dockermaze2-weapon-game
+    depends_on:
+      - head
+    networks:
+      - int
+  stockfish:
+    container_name: stockfish
+    build: ./dockermaze2-stockfish
+    ports:
+      - "9999:9999"
+    networks:
+      - int
+  radio:
+    container_name: radio
+    build: ./dockermaze2-radio-game
+    networks:
+      - int
+  heart:
+    container_name: heart
+    build: ./dockermaze2-heart-game
+    networks:
+      - ext
+networks:
+  ext:
+    driver: bridge
+  int:
+    driver: bridge

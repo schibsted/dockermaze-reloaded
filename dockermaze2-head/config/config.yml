@@ -1,0 +1,17 @@
+games:
+  game1:
+    name: "Weapon"
+    get_challenge: "targets"
+    solve_challenge: "evaluations"
+  game2:
+    name: "Radio"
+    get_challenge: "syn"
+    solve_challenge: "syn/ack"
+  game3:
+      name: "Legs"
+      get_challenge: "challenge/new"
+      solve_challenge: "challenge"
+  game4:
+      name: "Heart"
+      get_challenge: "heart/beat"
+      solve_challenge: "heart"

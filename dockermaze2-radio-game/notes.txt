@@ -1,0 +1,4 @@
+To create the binary:
+
+RUN gcc -m32 mac.c -masm=intel -fno-stack-protector -O0 -S -o /home/radio/create_mac.s
+RUN gcc -m32 /home/radio/create_mac.s -masm=intel -fno-stack-protector -O0 -o /home/radio/create_mac
